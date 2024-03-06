@@ -1,7 +1,6 @@
 package com.ninvb.applearn
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
