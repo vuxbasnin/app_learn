@@ -1,43 +1,48 @@
 package com.ninvb.applearn
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.ninvb.applearn.ui.theme.AppLearnTheme
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : ComponentActivity() {
+    val TAG = this::class.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            AppLearnTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                }
+        main()
+    }
+
+    fun main() = runBlocking {
+        repeat(50) { // launch a lot of coroutines
+            launch {
+                delay(5000L)
+                print(".")
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-            text = "Hello $name!",
-            modifier = modifier
-    )
-}
+    // Concurrently executes both sections
+    suspend fun doWorld() = coroutineScope { // this: CoroutineScope
+        launch {
+            delay(2000L)
+            println("World 2")
+        }
+        launch {
+            delay(1000L)
+            println("World 1")
+        }
+        println("Hello")
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AppLearnTheme {
-        Greeting("Android")
+    suspend fun repeat() = coroutineScope {
+        repeat(100) {
+            launch {
+                delay(3000L)
+                println("NIN DEP TRAI")
+            }
+        }
     }
 }
