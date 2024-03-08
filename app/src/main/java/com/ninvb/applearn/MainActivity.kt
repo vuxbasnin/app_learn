@@ -1,11 +1,14 @@
 package com.ninvb.applearn
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
+import com.ninvb.applearn.my_interface.DemoInterface
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import timber.log.Timber
 
 class MainActivity : ComponentActivity() {
     val TAG = this::class.simpleName
@@ -14,15 +17,9 @@ class MainActivity : ComponentActivity() {
         main()
     }
 
-    fun main() = runBlocking {
-        repeat(50) { // launch a lot of coroutines
-            launch {
-                delay(5000L)
-                print(".")
-            }
-        }
+    fun main() {
+        sendMessage()
     }
-
     // Concurrently executes both sections
     suspend fun doWorld() = coroutineScope { // this: CoroutineScope
         launch {
@@ -43,5 +40,11 @@ class MainActivity : ComponentActivity() {
                 println("NIN DEP TRAI")
             }
         }
+    }
+
+    fun sendMessage() {
+        val user = User()
+        user.sendMessage(SendMessageSms("Message sms"))
+        user.sendMessage(SendMessageEmail("Message email"))
     }
 }
