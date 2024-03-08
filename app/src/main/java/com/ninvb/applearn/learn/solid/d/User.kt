@@ -1,4 +1,4 @@
-package com.ninvb.applearn.learn.solid
+package com.ninvb.applearn.learn.solid.d
 
 import com.ninvb.applearn.my_interface.ISendMessage
 

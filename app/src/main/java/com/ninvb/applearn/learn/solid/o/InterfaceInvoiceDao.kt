@@ -1,5 +1,7 @@
 package com.ninvb.applearn.learn.solid.o
 
-interface InvoiceDao {
-    fun save()
+import com.ninvb.applearn.learn.solid.s.Invoice
+
+interface InterfaceInvoiceDao {
+    fun save(invoice: Invoice)
 }
