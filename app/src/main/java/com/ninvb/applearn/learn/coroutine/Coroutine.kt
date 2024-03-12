@@ -20,6 +20,13 @@ import kotlinx.coroutines.launch
  *          - async:    + tra ve 1 instance Deferred<T> va ham await() tra ve ket qua cua Coroutine
  *                      + Exception luu tru trong Deferred va khong duoc gui di bat ky dau. No se bi loai bo tru khi xu ly.
  *
+ * withContext:
+ *          - La 1 suspend function
+ *          - Khong tao coroutine moi, chi thay doi context cua coroutine hien tai => suspend function
+ *          - launch, async tao ra coroutine moi => khong phai suspend function
+ *
+ * Handle exception:
+ *          -
  */
 
 class Coroutine {
@@ -36,5 +43,11 @@ class Coroutine {
 
     suspend fun getResult(): Int {
         return asyncCoroutine.await()   //return 10
+    }
+
+    fun test () {
+        GlobalScope.launch(Dispatchers.IO) {
+            Thread.sleep(2000L)
+        }
     }
 }
