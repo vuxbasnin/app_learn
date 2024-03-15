@@ -8,8 +8,10 @@ class LiskovSubstitutionPrinciple {
     fun calculate(height: Int, weight: Int) {
         val rectangle = Rectangle()
         val square = Square()
-        rectangle.area(height, weight)
+        rectangle.area()
+        square.setWeight(weight)
+        square.setHeight(height)
         //cho nay tinh dien tich se sai, vi pham quy tac LSP cua SOLID
-        square.area(height, weight)
+        square.area()
     }
 }

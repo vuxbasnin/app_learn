@@ -5,13 +5,11 @@ package com.ninvb.applearn.learn.solid.l
  */
 
 class Square : Rectangle() {
-    fun setHeight(height: Int) {
-        this.height = height
-        this.weight = height
+    override fun setHeight(height: Int) {
+
     }
 
-    fun setWeight(weight: Int) {
-        this.weight = weight
-        this.height = weight
+    override fun setWeight(weight: Int) {
+
     }
 }

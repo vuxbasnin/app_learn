@@ -5,10 +5,18 @@ package com.ninvb.applearn.learn.solid.l
  */
 
 open class Rectangle {
-    var height = 0
-    var weight = 0
+    private var height = 0
+    private var weight = 0
 
-    open fun area(height: Int, weight: Int): Int {
+    open fun area(): Int {
         return height * weight
+    }
+
+    open fun setHeight(height: Int){
+        this.height = height
+    }
+
+    open fun setWeight(weight: Int){
+        this.weight = weight
     }
 }
