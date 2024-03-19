@@ -26,7 +26,10 @@ import kotlinx.coroutines.launch
  *          - launch, async tao ra coroutine moi => khong phai suspend function
  *
  * Handle exception:
- *          -
+ *          - CoroutineExceptionHandler
+ *
+ * Kiem tra coroutine co bi huy hay khong:
+ *          - ensureActive()
  */
 
 class Coroutine {
