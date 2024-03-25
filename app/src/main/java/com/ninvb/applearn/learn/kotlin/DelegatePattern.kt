@@ -3,6 +3,7 @@ package com.ninvb.applearn.learn.kotlin
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -28,11 +29,13 @@ class IntPreference(
     private val defaultValue: Int
 ) : ReadWriteProperty<Any, Int> {
     override fun getValue(thisRef: Any, property: KProperty<*>): Int {
+        Log.d("NINVB99", "IntPreference => getValue")
         return preferences.getInt(name, defaultValue)
     }
 
     @SuppressLint("CommitPrefEdits")
     override fun setValue(thisRef: Any, property: KProperty<*>, value: Int) {
+        Log.d("NINVB99", "IntPreference => setValue")
         preferences.edit().putInt(name, value)
     }
 }

@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import com.ninvb.applearn.learn.kotlin.DelegatePattern
 import com.ninvb.applearn.learn.solid.d.SendMessageEmail
 import com.ninvb.applearn.learn.solid.d.SendMessageSms
 import com.ninvb.applearn.learn.solid.d.User
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             TestCompose()
         }
+        delegate()
     }
 
     fun bind() {
@@ -36,5 +38,11 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun TestCompose() {
         Text(text = "Hello world!")
+    }
+
+    //Delegate
+    private fun delegate() {
+        val delegate = DelegatePattern(this)
+        delegate.launchCount = 2
     }
 }
